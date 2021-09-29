@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav>
-    @include('includes.nav')
+{{--    @include('includes.nav')--}}
 </nav>
 @yield('content')
 </body>
