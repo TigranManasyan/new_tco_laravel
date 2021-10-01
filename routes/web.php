@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 /*
@@ -52,13 +53,29 @@ use App\Http\Controllers\PostController;
 
 
 
-Route::get('/form', function() {
-    return view('form');
-});
+//Route::get('/form', function() {
+//    return view('form');
+//});
+//
+//Route::post(
+//    '/form/send',
+//    [PostController::class, 'forForm']
+//)->name('send-data');
+
+Route::get(
+    '/products',
+    [ProductController::class, 'index']
+)->name('all-products');
+
+
+
+
+
+Route::get('/products/new', function() {
+    return view('products.new_product');
+})->name('create-product');
 
 Route::post(
-    '/form/send',
-    [PostController::class, 'forForm']
-)->name('send-data');
-
-
+    '/products/new/send',
+    [ProductController::class, 'create']
+)->name('store-product');
