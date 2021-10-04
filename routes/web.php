@@ -79,3 +79,25 @@ Route::post(
     '/products/new/send',
     [ProductController::class, 'create']
 )->name('store-product');
+
+Route::get(
+    '/products/{id}',
+    [ProductController::class, 'one_product'])
+    ->name('one');
+
+Route::get(
+    '/products/delete/{id}',
+    [ProductController::class, 'delete'])
+    ->name('delete-product');
+
+
+Route::get(
+    '/products/edit/{id}',
+    [ProductController::class, 'edit'])
+    ->name('edit-product');
+
+
+Route::post(
+    '/products/edit/{id}',
+    [ProductController::class, 'update'])
+    ->name('update-product');

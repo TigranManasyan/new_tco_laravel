@@ -28,4 +28,33 @@ class ProductController extends Controller
             ->route('create-product')
             ->with('success', 'Row successfully inserted!');
     }
+
+    public function one_product($id) {
+        return view('products.one_product', ['product' => Product::find($id)]);
+    }
+
+    public function delete($id) {
+        $product = new Product();
+        $product->find($id)->delete();
+        return redirect()
+            ->route('all-products')
+            ->with('success', 'Row successfully deleted!');
+    }
+
+    public function edit($id) {
+        return view('products.update_product', ['product' => Product::find($id)]);
+    }
+
+    public function update(Request $request, $id) {
+        $product = new Product();
+        $product->find($id)->update([
+            'product_name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'created_at' => NOW(),
+            'updated_at' => NOW()
+        ]);
+        return $this->one_product($id);
+    }
+
 }

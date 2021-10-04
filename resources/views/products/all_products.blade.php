@@ -25,7 +25,9 @@
                                <td>{{$products[$i]['created_at']}}</td>
                                <td>
                                    <button class="btn btn-info">
-                                       More
+                                       <a style="color:white; text-decoration:none" href="{{route('one', $products[$i]['id'])}}">
+                                           More
+                                       </a>
                                    </button>
                                </td>
                            </tr>
@@ -33,6 +35,13 @@
                     @endif
                 </tbody>
             </table>
+        </div>
+        <div class="col-md-6">
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{session('success')}}
+                </div>
+                @endif
         </div>
     </div>
 @endsection
