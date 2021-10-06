@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -101,3 +102,6 @@ Route::post(
     '/products/edit/{id}',
     [ProductController::class, 'update'])
     ->name('update-product');
+
+
+Route::resource('/categories', CategoryController::class);
