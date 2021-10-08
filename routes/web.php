@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -63,45 +65,56 @@ use App\Http\Controllers\PostController;
 //    [PostController::class, 'forForm']
 //)->name('send-data');
 
-Route::get(
-    '/products',
-    [ProductController::class, 'index']
-)->name('all-products');
+//Route::get(
+//    '/products',
+//    [ProductController::class, 'index']
+//)->name('all-products');
+//
+//
+//
+//
+//
+//Route::get('/products/new', function() {
+//    return view('products.new_product');
+//})->name('create-product');
+//
+//Route::post(
+//    '/products/new/send',
+//    [ProductController::class, 'create']
+//)->name('store-product');
+//
+//Route::get(
+//    '/products/{id}',
+//    [ProductController::class, 'one_product'])
+//    ->name('one');
+//
+//Route::get(
+//    '/products/delete/{id}',
+//    [ProductController::class, 'delete'])
+//    ->name('delete-product');
+//
+//
+//Route::get(
+//    '/products/edit/{id}',
+//    [ProductController::class, 'edit'])
+//    ->name('edit-product');
+//
+//
+//Route::post(
+//    '/products/edit/{id}',
+//    [ProductController::class, 'update'])
+//    ->name('update-product');
+//
+//
+//Route::resource('/categories', CategoryController::class);
 
-
-
-
-
-Route::get('/products/new', function() {
-    return view('products.new_product');
-})->name('create-product');
-
+Route::get('/upload', function () {
+    return view('upload.form_upload');
+})->name('upload');
 Route::post(
-    '/products/new/send',
-    [ProductController::class, 'create']
-)->name('store-product');
-
-Route::get(
-    '/products/{id}',
-    [ProductController::class, 'one_product'])
-    ->name('one');
-
-Route::get(
-    '/products/delete/{id}',
-    [ProductController::class, 'delete'])
-    ->name('delete-product');
+    '/upload/store',
+    [ImageController::class, 'upload']
+)->name('upload-store');
 
 
-Route::get(
-    '/products/edit/{id}',
-    [ProductController::class, 'edit'])
-    ->name('edit-product');
-
-
-Route::post(
-    '/products/edit/{id}',
-    [ProductController::class, 'update'])
-    ->name('update-product');
-
-
-Route::resource('/categories', CategoryController::class);
+Route::get('/books', [BookController::class, 'index']);
